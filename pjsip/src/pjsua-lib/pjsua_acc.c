@@ -2747,8 +2747,12 @@ PJ_DEF(pj_status_t) pjsua_acc_set_registration( pjsua_acc_id acc_id,
 	    PJ_UNUSED_ARG(d);
 
 	    h = pjsip_authorization_hdr_create(tdata->pool);
+			PJ_LOG(3, (THIS_FILE, "AUTH HEADER: ", h));
 	    h->scheme = pj_str("Digest");
 	    h->credential.digest.username = acc->cred[0].username;
+			PJ_LOG(3, (THIS_FILE, "ACC: ", acc));
+			PJ_LOG(3, (THIS_FILE, "ACC CREDS: ", acc->cred));
+			PJ_LOG(3, (THIS_FILE, "USERNAME: ", acc->cred[0].username));
 	    h->credential.digest.realm = acc->srv_domain;
 	    h->credential.digest.uri = pj_str(uri);
 	    h->credential.digest.algorithm = pj_str("md5");
