@@ -2705,7 +2705,7 @@ PJ_DEF(pj_status_t) pjsua_acc_set_registration( pjsua_acc_id acc_id,
 
     acc = &pjsua_var.acc[acc_id];
 
-		PJ_LOG(4, (THIS_FILE, "ACC: ", acc));
+		PJ_LOG(4, (THIS_FILE, "ACC: %s", acc));
 
     /* Cancel any re-registration timer */
     if (pjsua_var.acc[acc_id].auto_rereg.timer.id) {
@@ -2737,7 +2737,7 @@ PJ_DEF(pj_status_t) pjsua_acc_set_registration( pjsua_acc_id acc_id,
 	status = pjsip_regc_register(pjsua_var.acc[acc_id].regc, 1, 
 				     &tdata);
 
-	PJ_LOG(4, (THIS_FILE, "STATUS: ", status));
+	PJ_LOG(4, (THIS_FILE, "STATUS: %s", status));
 
 	if (status == PJ_SUCCESS && pjsua_var.acc[acc_id].cred_cnt) {
 	    pjsip_authorization_hdr *h;
@@ -2751,11 +2751,11 @@ PJ_DEF(pj_status_t) pjsua_acc_set_registration( pjsua_acc_id acc_id,
 	    PJ_UNUSED_ARG(d);
 
 	    h = pjsip_authorization_hdr_create(tdata->pool);
-			PJ_LOG(4, (THIS_FILE, "AUTH HEADER: ", h));
+			PJ_LOG(4, (THIS_FILE, "AUTH HEADER: %s", h));
 	    h->scheme = pj_str("Digest");
 	    h->credential.digest.username = acc->cred[0].username;
-			PJ_LOG(4, (THIS_FILE, "ACC CREDS: ", acc->cred));
-			PJ_LOG(4, (THIS_FILE, "USERNAME: ", acc->cred[0].username));
+			PJ_LOG(4, (THIS_FILE, "ACC CREDS: %s", acc->cred));
+			PJ_LOG(4, (THIS_FILE, "USERNAME: %s", acc->cred[0].username));
 	    h->credential.digest.realm = acc->srv_domain;
 	    h->credential.digest.uri = pj_str(uri);
 	    h->credential.digest.algorithm = pj_str("md5");
