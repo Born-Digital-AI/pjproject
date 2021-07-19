@@ -299,8 +299,7 @@
  * Default: (PJMEDIA_SND_DEFAULT_PLAY_LATENCY+20)/20
  */
 #ifndef PJMEDIA_SOUND_BUFFER_COUNT
-// #   define PJMEDIA_SOUND_BUFFER_COUNT	    ((PJMEDIA_SND_DEFAULT_PLAY_LATENCY+20)/20)
-#   define PJMEDIA_SOUND_BUFFER_COUNT	    16
+#   define PJMEDIA_SOUND_BUFFER_COUNT	    ((PJMEDIA_SND_DEFAULT_PLAY_LATENCY+20)/20)
 #endif
 
 
@@ -678,7 +677,7 @@
  * has the range from zero to 0xFFFF.
  */
 #ifndef PJMEDIA_SILENCE_DET_THRESHOLD
-#   define PJMEDIA_SILENCE_DET_THRESHOLD	65535
+#   define PJMEDIA_SILENCE_DET_THRESHOLD	4
 #endif
 
 
@@ -701,7 +700,7 @@
  * By default is enabled.
  */
 #ifndef PJMEDIA_HAS_SPEEX_AEC
-#   define PJMEDIA_HAS_SPEEX_AEC		0
+#   define PJMEDIA_HAS_SPEEX_AEC		1
 #endif
 
 
@@ -722,7 +721,7 @@
  * Default: 1 (yes)
  */
 #ifndef PJMEDIA_SPEEX_AEC_USE_DENOISE
-#   define PJMEDIA_SPEEX_AEC_USE_DENOISE	0
+#   define PJMEDIA_SPEEX_AEC_USE_DENOISE	1
 #endif
 
 
