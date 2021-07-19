@@ -677,7 +677,7 @@
  * has the range from zero to 0xFFFF.
  */
 #ifndef PJMEDIA_SILENCE_DET_THRESHOLD
-#   define PJMEDIA_SILENCE_DET_THRESHOLD	4
+#   define PJMEDIA_SILENCE_DET_THRESHOLD	65535
 #endif
 
 
