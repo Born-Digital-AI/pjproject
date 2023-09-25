@@ -3,8 +3,8 @@
 
 #define PJSUA_MAX_ACC           400
 #define PJSUA_MAX_CALLS     200
-#define PJSUA_MAX_PLAYERS       400
-#define PJSUA_MAX_RECORDERS       400
+#define PJSUA_MAX_PLAYERS       800
+#define PJSUA_MAX_RECORDERS       800
 #define PJSUA_MAX_CONF_PORTS       600
 
 #define PJ_IOQUEUE_MAX_HANDLES      1024
