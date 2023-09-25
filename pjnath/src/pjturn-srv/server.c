@@ -28,7 +28,7 @@
 #define MIN_PORT		49152
 #define MAX_PORT		65535
 #define MAX_LISTENERS		400
-#define MAX_THREADS		800
+#define MAX_THREADS		400
 #define MAX_NET_EVENTS		1000
 
 /* Prototypes */
