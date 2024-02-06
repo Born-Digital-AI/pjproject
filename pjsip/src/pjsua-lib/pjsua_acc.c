@@ -3147,7 +3147,7 @@ PJ_DEF(pjsua_acc_id) pjsua_acc_find_for_incoming(pjsip_rx_data *rdata)
         }
     }
 
-    PJ_LOG(6,(THIS_FILE, "Account selected for incoming call: #%u, score: %d", id, max_score));
+    PJ_LOG(4,(THIS_FILE, "Account selected for incoming call: #%u, score: %d", id, max_score));
 
 on_return:
     PJSUA_UNLOCK();
