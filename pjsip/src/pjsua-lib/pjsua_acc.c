@@ -3141,6 +3141,13 @@ PJ_DEF(pjsua_acc_id) pjsua_acc_find_for_incoming(pjsip_rx_data *rdata)
             score |= 1;
         }
 
+        // Logging user part, domain, and score for the current account
+        PJ_LOG(4,(THIS_FILE, "Iterating Account: #%u, User: %.*s, Domain: %.*s, Score: %d",
+                  acc_id,
+                  (int)acc->user_part.slen, acc->user_part.ptr,
+                  (int)acc->srv_domain.slen, acc->srv_domain.ptr,
+                  score));
+
         if (score > max_score) {
             id = acc_id;
             max_score = score;
