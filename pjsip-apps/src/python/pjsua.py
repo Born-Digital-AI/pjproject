@@ -2457,6 +2457,15 @@ class Lib:
         lck = self.auto_lock()
         return _pjsua.conf_get_max_ports()
 
+    def conf_get_active_ports(self):
+        """Get the number of ports currently registered to the conference bridge.
+
+        Return:
+            number of active ports.
+        """
+        lck = self.auto_lock()
+        return _pjsua.conf_get_active_ports()
+
     def conf_connect(self, src_slot, dst_slot):
         """Establish unidirectional media flow from souce to sink. 
         
