@@ -469,6 +469,8 @@ class TransportConfig:
     Member configuration:
 
     port        -- port number.
+    port_range  -- Specify the port range for socket binding, relative to the start port number
+                   specified in port.
     bound_addr  -- optionally specify the address to bind the socket to.
                    Default is empty to bind to INADDR_ANY.
     public_addr -- optionally override the published address for this
@@ -478,7 +480,7 @@ class TransportConfig:
     qos_type    -- High level traffic classification.
                    Enumerator:
                      0: PJ_QOS_TYPE_BEST_EFFORT
-                          Best effort traffic (default value). Any QoS function calls with 
+                          Best effort traffic (default value). Any QoS function calls with
                           specifying this value are effectively no-op
                      1: PJ_QOS_TYPE_BACKGROUND
                           Background traffic.
@@ -506,25 +508,28 @@ class TransportConfig:
     port = 0
     bound_addr = ""
     public_addr = ""
-    
+    port_range = 0
+
     qos_type = 0
     qos_params_flags = 0
     qos_params_dscp_val = 0
     qos_params_so_prio = 0
     qos_params_wmm_prio = 0
-    
-    
 
-    def __init__(self, port=0, 
-                 bound_addr="", public_addr=""):
+
+
+    def __init__(self, port=0,
+                 bound_addr="", public_addr="", port_range=0):
         self.port = port
         self.bound_addr = bound_addr
         self.public_addr = public_addr
+        self.port_range = port_range
 
     def _cvt_from_pjsua(self, cfg):
         self.port = cfg.port
         self.bound_addr = cfg.bound_addr
         self.public_addr = cfg.public_addr
+        self.port_range = cfg.port_range
         self.qos_type = cfg.qos_type
         self.qos_params_flags = cfg.qos_params_flags
         self.qos_params_dscp_val = cfg.qos_params_dscp_val
@@ -536,6 +541,7 @@ class TransportConfig:
         cfg.port = self.port
         cfg.bound_addr = self.bound_addr
         cfg.public_addr = self.public_addr
+        cfg.port_range = self.port_range
         cfg.qos_type = self.qos_type
         cfg.qos_params_flags = self.qos_params_flags
         cfg.qos_params_dscp_val = self.qos_params_dscp_val
