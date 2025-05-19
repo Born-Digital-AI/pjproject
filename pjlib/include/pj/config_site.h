@@ -1,11 +1,11 @@
-#define PJSIP_MAX_TRANSPORTS        400
+#define PJSIP_MAX_TRANSPORTS        600
 #define PJSIP_MAX_RESOLVED_ADDRESSES    400
 
 #define PJSUA_MAX_ACC           400
-#define PJSUA_MAX_CALLS     200
-#define PJSUA_MAX_PLAYERS       400
-#define PJSUA_MAX_RECORDERS       400
-#define PJSUA_MAX_CONF_PORTS       600
+#define PJSUA_MAX_CALLS     400
+#define PJSUA_MAX_PLAYERS       1200
+#define PJSUA_MAX_RECORDERS       1200
+#define PJSUA_MAX_CONF_PORTS       1200
 
 #define PJ_IOQUEUE_MAX_HANDLES      1024
 #define FD_SETSIZE_SETABLE      1
