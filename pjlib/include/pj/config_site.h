@@ -7,9 +7,9 @@
 #define PJSUA_MAX_RECORDERS       1200
 #define PJSUA_MAX_CONF_PORTS       1200
 
-#define PJ_IOQUEUE_MAX_HANDLES      1024
+#define PJ_IOQUEUE_MAX_HANDLES      2048
 #define FD_SETSIZE_SETABLE      1
-#define __FD_SETSIZE            1024
+#define __FD_SETSIZE            2048
 
 #define PJ_HAS_SSL_SOCK 1
 #define PJSIP_MAX_PKT_LEN 12288
