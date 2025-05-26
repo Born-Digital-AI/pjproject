@@ -1518,7 +1518,8 @@ typedef struct
 {
     PyObject_HEAD
     /* Type-specific fields go here. */
-    unsigned	port;
+    unsigned    port;
+    unsigned int port_range; /* Added port_range */
     PyObject   *public_addr;
     PyObject   *bound_addr;
 } PyObj_pjsua_transport_config;
@@ -1542,7 +1543,7 @@ static void PyObj_pjsua_transport_config_export(pjsua_transport_config *cfg,
     cfg->public_addr	= PyString_to_pj_str(obj->public_addr);
     cfg->bound_addr	= PyString_to_pj_str(obj->bound_addr);
     cfg->port		= obj->port;
-
+    cfg->port_range	= obj->port_range; /* Added port_range */
 }
 
 static void PyObj_pjsua_transport_config_import(PyObj_pjsua_transport_config *obj,
@@ -1557,6 +1558,7 @@ static void PyObj_pjsua_transport_config_import(PyObj_pjsua_transport_config *ob
 					         cfg->bound_addr.slen);
 
     obj->port = cfg->port;
+    obj->port_range = cfg->port_range; /* Added port_range */
 }
 
 
@@ -1603,6 +1605,11 @@ static PyMemberDef PyObj_pjsua_transport_config_members[] =
         "even when default port is desired. If the value is zero, the "
         "transport will be bound to any available port, and application "
         "can query the port by querying the transport info."
+    },
+    {
+        "port_range", T_UINT, /* Added port_range member */
+        offsetof(PyObj_pjsua_transport_config, port_range), 0,
+        "Optional port range for socket binding, relative to the start port."
     },
     {
         "public_addr", T_OBJECT_EX, 
@@ -1713,12 +1720,12 @@ static void PyObj_pjsua_transport_info_import(PyObj_pjsua_transport_info *obj,
 {
     obj->id	    = info->id;
     obj->type	    = info->type;
-    obj->type_name  = PyString_FromStringAndSize(info->type_name.ptr,
+    obj->type_name  = PyString_FromStringAndSize(info->type_name.ptr, 
 						 info->type_name.slen);
-    obj->info	    = PyString_FromStringAndSize(info->info.ptr,
+    obj->info	    = PyString_FromStringAndSize(info->info.ptr, 
 						 info->info.slen);
     obj->flag	    = info->flag;
-    obj->addr	    = PyString_FromStringAndSize(info->local_name.host.ptr,
+    obj->addr	    = PyString_FromStringAndSize(info->local_name.host.ptr, 
 						 info->local_name.host.slen);
     obj->port	    = info->local_name.port;
     obj->usage_count= info->usage_count;
@@ -1859,7 +1866,6 @@ static PyTypeObject PyTyp_pjsua_transport_info =
 
 
 //////////////////////////////////////////////////////////////////////////////
-
 /*
  * PyObj_pjsua_acc_config
  * Acc Config
@@ -2659,4 +2665,3 @@ static PyTypeObject PyTyp_pjsua_buddy_info =
 
 
 #endif	/* __PY_PJSUA_H__ */
-
